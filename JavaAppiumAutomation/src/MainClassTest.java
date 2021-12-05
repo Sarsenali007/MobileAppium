@@ -4,8 +4,10 @@ import org.junit.Test;
 public class MainClassTest extends MainClass {
 
     @Test
-    public void testGetClassNumber(){
-        Assert.assertTrue("function return number > 45",this.getClassNumber()>45);
+    public void testGetClassString(){
+        String[] subStr;
+        subStr = this.getClassString().split(",");
+        Assert.assertEquals ("String have word Hello ", subStr[0],"Hello");
     }
 
 }
