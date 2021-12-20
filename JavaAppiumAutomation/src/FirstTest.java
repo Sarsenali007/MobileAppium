@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -37,21 +36,42 @@ public class FirstTest {
 
     @Test
     public void firstTest(){
-        WebElement element_to_init_search = driver.findElementByXPath("//*[contains(@text, 'Search Wikipedia')]");
-        element_to_init_search.click();
 
-        WebElement element_to_enter_search_line =waitForElementPresentByXpath(
+        waitForElementByXpathAndClick(
+                "//*[contains(@text, 'Search Wikipedia')]",
+                "cannot find Search Wikipedia input",
+                5
+        );
+        waitForElementByXpathAndSendKeys(
                 "//*[contains(@text, 'Search…')]",
+                "Java",
                 "cannot find search input",
                 5
         );
-        element_to_enter_search_line.sendKeys("Java");
         waitForElementPresentByXpath(
-                "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text, 'Object-oriented programming language']",
+                "//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']",
                 "cannon find 'Object-oriented programming language'",
                 15
         );
         //       System.out.println("First test run");
+    }
+    @Test
+    public void testCancelSearch(){
+        waitForElementPresentById(
+                "org.wikipedia:id/search_container",
+                "cannot find Search Wikipedia input",
+                5
+        );
+        waitForElementByIdAndClick(
+                "org.wikipedia:id/search_close_btn",
+                "cannot find X to cancel search",
+                5
+        );
+        waitForElementNotPresent(
+                "org.wikipedia:id/search_close_btn",
+                "X is still present on page",
+                5
+        );
     }
 
     private WebElement waitForElementPresentByXpath (String xpath, String error_message, long timeoutInSeconds)
@@ -67,5 +87,45 @@ public class FirstTest {
     private WebElement waitForElementPresentByXpath (String xpath, String error_message)
     {
         return waitForElementPresentByXpath(xpath, error_message);
+    }
+
+    private WebElement waitForElementByXpathAndClick(String xpath, String error_message, long timeoutInSeconds)
+    {
+        WebElement element = waitForElementPresentByXpath(xpath, error_message, timeoutInSeconds);
+        element.click();
+        return element;
+    }
+
+    private WebElement waitForElementByXpathAndSendKeys(String xpath, String value, String error_message, long timeoutInSeconds)
+    {
+        WebElement element = waitForElementPresentByXpath(xpath, error_message, timeoutInSeconds);
+        element.sendKeys(value);
+        return element;
+    }
+
+    private WebElement waitForElementPresentById (String id, String error_message, long timeoutInSeconds)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(error_message + "\n");
+        By by = By.id(id);
+        return wait.until(
+                ExpectedConditions.presenceOfElementLocated(by)
+        );
+    }
+
+    private WebElement waitForElementByIdAndClick(String id, String error_message, long timeoutInSeconds)
+    {
+        WebElement element = waitForElementPresentByXpath(id, error_message, timeoutInSeconds);
+        element.click();
+        return element;
+    }
+
+    private boolean waitForElementNotPresent(String id, String error_message, long timeoutInSeconds){
+        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        wait.withMessage(error_message + "\n");
+        By by = By.id(id);
+        return wait.until(
+                ExpectedConditions.invisibilityOfElementLocated(by)
+        );
     }
 }
