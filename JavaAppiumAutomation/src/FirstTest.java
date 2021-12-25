@@ -1,10 +1,10 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,7 +35,7 @@ public class FirstTest {
     }
 
     @Test
-    public void assertElementHasText(){
+    public void firstTest(){
 
         waitForElementAndClick(
                 By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
@@ -48,28 +48,53 @@ public class FirstTest {
                 "cannot find search input",
                 5
         );
-        waitForElementAndClick(
+        waitForElementPresent(
                 By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
                 "cannon find 'Object-oriented programming language'",
                 15
         );
+        //       System.out.println("First test run");
+    }
+    @Test
+    public void testCancelsearch(){
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_container"),
+                "cannot find Search Wikipedia input",
+                5
+        );
 
-        WebElement title_element = waitForElementPresent(
-                By.id("org.wikipedia:id/view_page_title_text"),
-                "cannon find 'article title'",
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text, 'Search…')]"),
+                "Java",
+                "cannot find search input",
+                5
+        );
+
+        WebElement number = waitForElementPresent(
+                By.xpath("//*[contains(@index, 3)]"),
+                "cannon find index 3'",
                 15
         );
 
-        String article_title = title_element.getAttribute("text");
+        waitForElementAndSendClear(
+                By.id("org.wikipedia:id/search_src_text"),
+                "cannot find search field",
+                5
+        );
 
-        Assert.assertEquals(
-                "we see unexpected title",
-                "Java (programming language)",
-                article_title
-                );
+        waitForElementAndClick(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "cannot find X to cancel search",
+                5
+        );
 
+        waitForElementNotPresent(
+                By.id("org.wikipedia:id/search_close_btn"),
+                "X is still present on page",
+                5
+        );
     }
-
+    
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -112,4 +137,6 @@ public class FirstTest {
         element.clear();
         return element;
     }
+
+
 }
