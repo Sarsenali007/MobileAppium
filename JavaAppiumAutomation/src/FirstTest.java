@@ -1,6 +1,7 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -63,17 +64,12 @@ public class FirstTest {
                 5
         );
 
+
         waitForElementAndSendKeys(
                 By.xpath("//*[contains(@text, 'Search…')]"),
                 "Java",
                 "cannot find search input",
                 5
-        );
-
-        WebElement number = waitForElementPresent(
-                By.xpath("//*[contains(@index, 3)]"),
-                "cannon find index 3'",
-                15
         );
 
         waitForElementAndSendClear(
@@ -94,7 +90,41 @@ public class FirstTest {
                 5
         );
     }
-    
+    @Test
+    public void assertElement(){
+
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "cannot find Search Wikipedia input",
+                5
+        );
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text, 'Search…')]"),
+                "Java",
+                "cannot find search input",
+                5
+        );
+
+        WebElement number = waitForElementPresent(
+                By.xpath("//*[contains(@index, 3)]"),
+                "cannon find index 3'",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
+                "cannon find 'Object-oriented programming language'",
+                15
+        );
+        assertElementHasText(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "Java (programming language)",
+                "cannon find 'article title'",
+                15
+        );
+
+    }
+
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
@@ -136,6 +166,21 @@ public class FirstTest {
         WebElement element = waitForElementPresent(by, error_message, timeoutInSeconds);
         element.clear();
         return element;
+    }
+
+    private void assertElementHasText(By by, String expectedText, String errorMessage,long timeoutInSeconds ) {
+        WebElement title_element = waitForElementPresent(
+                by,
+                errorMessage,
+                15
+        );
+        String article_title = title_element.getAttribute("text");
+
+        Assert.assertEquals(
+                errorMessage,
+                expectedText,
+                article_title
+        );
     }
 
 
