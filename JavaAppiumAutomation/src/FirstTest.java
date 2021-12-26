@@ -600,6 +600,40 @@ public class FirstTest {
         );
     }
 
+    @Test
+    public void assertElementPresent(){
+
+        waitForElementAndClick(
+                By.xpath("//*[contains(@text, 'Search Wikipedia')]"),
+                "cannot find Search Wikipedia input",
+                5
+        );
+        waitForElementAndSendKeys(
+                By.xpath("//*[contains(@text, 'Search…')]"),
+                "Java",
+                "cannot find search input",
+                5
+        );
+
+        waitForElementPresent(
+                By.xpath("//*[contains(@index, 3)]"),
+                "cannon find index 3'",
+                15
+        );
+
+        waitForElementAndClick(
+                By.xpath("//*[@resource-id='org.wikipedia:id/page_list_item_container']//*[@text='Object-oriented programming language']"),
+                "cannon find 'Object-oriented programming language'",
+                15
+        );
+        assertElementHasTextNotWait(
+                By.id("org.wikipedia:id/view_page_title_text"),
+                "Java (programming language)",
+                "cannon find 'article title'"
+        );
+
+    }
+
 
     private WebElement waitForElementPresent(By by, String error_message, long timeoutInSeconds)
     {
@@ -649,6 +683,18 @@ public class FirstTest {
                 by,
                 errorMessage,
                 15
+        );
+        String article_title = title_element.getAttribute("text");
+        Assert.assertEquals(
+                errorMessage,
+                expectedText,
+                article_title
+        );
+    }
+    private void assertElementHasTextNotWait(By by, String expectedText, String errorMessage) {
+        WebElement title_element = waitForElementPresent(
+                by,
+                errorMessage
         );
         String article_title = title_element.getAttribute("text");
         Assert.assertEquals(
