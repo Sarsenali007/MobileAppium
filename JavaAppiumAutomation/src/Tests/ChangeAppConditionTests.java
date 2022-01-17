@@ -10,6 +10,7 @@ import org.openqa.selenium.ScreenOrientation;
 public class ChangeAppConditionTests extends CoreTestCase
 {
     private MainPageObject MainPageObject;
+    /*
     @Test
     public void testChangeScreenOrientationOnSearchResults() {
         MainPageObject.waitForElementAndClick(
@@ -69,7 +70,7 @@ public class ChangeAppConditionTests extends CoreTestCase
                 titleAfterSecondRotation
         );
     }
-    /*
+
     @Test
     public void testCheckSearchArticleInBackground() {
         MainPageObject.waitForElementAndClick(

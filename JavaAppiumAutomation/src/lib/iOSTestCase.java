@@ -1,13 +1,13 @@
 package lib;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import junit.framework.TestCase;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 
-public class CoreTestCase extends TestCase {
+public class iOSTestCase extends TestCase {
 
     protected AppiumDriver driver;
 
@@ -20,14 +20,11 @@ public class CoreTestCase extends TestCase {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("deviceName","AndroidTestDevice");
-        capabilities.setCapability("platformVersion","10");
-        capabilities.setCapability("automationName","Appium");
-        capabilities.setCapability("appPackage","org.wikipedia");
-        capabilities.setCapability("appActivity",".main.MainActivity");
+        capabilities.setCapability("platformName","iOS");
+        capabilities.setCapability("deviceName","iPhone 8");
+        capabilities.setCapability("platformVersion","15.2");
         capabilities.setCapability("app","/Users/sarsenalizhunisbek/Documents/GitHub/MobileAppium/apks/org.wikipedia.apk");
-        driver = new AndroidDriver(new URL(Appium_URL), capabilities);
+        driver = new IOSDriver(new URL(Appium_URL), capabilities);
     }
 
     @Override

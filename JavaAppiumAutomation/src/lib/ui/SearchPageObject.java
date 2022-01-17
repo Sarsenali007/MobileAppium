@@ -1,7 +1,6 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 
 public class SearchPageObject extends MainPageObject{
@@ -61,24 +60,22 @@ public class SearchPageObject extends MainPageObject{
         String search_result_xpath = getResultSearchElement(substring);
         this.waitForElementAndClick(By.xpath(search_result_xpath), "Cannot find and click with" + substring, 9);
     }
-
-    public int getAmountOfFoundArticles(){
-
-       this.waitForElementPresent(
+    public int getAmountOfFoundArticles() {
+        this.waitForElementPresent(
                 By.xpath(SERACH_RESULT_ELEMENT),
                 "Cannot find anything by the request ",
                 15
         );
         return this.getAmountOfElements(By.xpath(SERACH_RESULT_ELEMENT));
     }
-
-    public void waitForEmptyResultsLabel()
-    {
-        this.waitForElementPresent(By.xpath(SEARCH_EMPTY_RESULT_ELEMENT), "Cannot find empty result", 10);
+    public void waitForEmptyResultsLabel() {
+        this.waitForElementPresent(By.xpath(SEARCH_EMPTY_RESULT_ELEMENT), "Cannot find empty result label by the request ", 15);
+    }
+    public void assertThereIsNoResultOfSearch() {
+        this.waitForElementNotPresent(By.xpath(SERACH_RESULT_ELEMENT), "We supposed not to find any result!", 5);
     }
 
-    public void assertThereIsNoResultOfSearch()
-    {
-        this.assertElementNotPresent(By.xpath(SERACH_RESULT_ELEMENT), "We supposed not to find any result");
+    public void assertTherePageOfSearchIsClose() {
+        this.waitForElementNotPresent(By.id("org.wikipedia:id/fragment_search_results"), "Search results are not missing", 5);
     }
 }
