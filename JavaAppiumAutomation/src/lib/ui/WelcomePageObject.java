@@ -6,12 +6,12 @@ import org.openqa.selenium.By;
 public class WelcomePageObject extends MainPageObject
 {
     private static final String
-            STEP_LEARN_MORE_LINK = "Узнать подробнее о Википедии",
-            STEP_NEW_WAY_TO_EXPLORE_TEXT = "Новые способы изучения",
-            STEP_ADD_OR_EDIT_PREFERRED_LANG_LINK = "Добавить или изменить предпочтительные языки",
-            STEP_LEARN_MORE_ABOUT_DATA_COLLECTED_LINK = "Узнать подробнее о сборе данных",
-            NEXT_BUTTON = "Далее",
-            GET_STARTED_BUTTON = "Начать";
+            STEP_LEARN_MORE_LINK = "id:Узнать подробнее о Википедии",
+            STEP_NEW_WAY_TO_EXPLORE_TEXT = "id:Новые способы изучения",
+            STEP_ADD_OR_EDIT_PREFERRED_LANG_LINK = "id:Добавить или изменить предпочтительные языки",
+            STEP_LEARN_MORE_ABOUT_DATA_COLLECTED_LINK = "id:Узнать подробнее о сборе данных",
+            NEXT_BUTTON = "id:Далее",
+            GET_STARTED_BUTTON = "id:Начать";
 
     public WelcomePageObject(AppiumDriver driver)
     {
@@ -20,31 +20,31 @@ public class WelcomePageObject extends MainPageObject
 
     public void waitElementForLearnMoreLink()
     {
-        this.waitForElementPresent(By.id(STEP_LEARN_MORE_LINK), "Cannot find 'Узнать подробнее о Википедии' link", 10);
+        this.waitForElementPresent(STEP_LEARN_MORE_LINK, "Cannot find 'Узнать подробнее о Википедии' link", 10);
     }
 
     public void waitForNewWayToExploreText()
     {
-        this.waitForElementPresent(By.id(STEP_NEW_WAY_TO_EXPLORE_TEXT), "Cannot find 'Узнать подробнее о Википедии' link", 10);
+        this.waitForElementPresent(STEP_NEW_WAY_TO_EXPLORE_TEXT, "Cannot find 'Узнать подробнее о Википедии' link", 10);
     }
 
     public void waitForAddOrEditPreferredLangText()
     {
-        this.waitForElementPresent(By.id(STEP_ADD_OR_EDIT_PREFERRED_LANG_LINK), "Cannot find 'Добавить или изменить предпочтительные языки' link", 10);
+        this.waitForElementPresent(STEP_ADD_OR_EDIT_PREFERRED_LANG_LINK, "Cannot find 'Добавить или изменить предпочтительные языки' link", 10);
     }
 
     public void waitForLearnMoreAboutDataCollectedText()
     {
-        this.waitForElementPresent(By.id(STEP_LEARN_MORE_ABOUT_DATA_COLLECTED_LINK), "Cannot find 'Узнать подробнее о сборе данных' link", 10);
+        this.waitForElementPresent(STEP_LEARN_MORE_ABOUT_DATA_COLLECTED_LINK, "Cannot find 'Узнать подробнее о сборе данных' link", 10);
     }
 
     public void clickNextButton()
     {
-        this.waitForElementAndClick(By.id(NEXT_BUTTON), "Cannot find and click 'Далее' link", 10);
+        this.waitForElementAndClick(NEXT_BUTTON, "Cannot find and click 'Далее' link", 10);
     }
 
     public void clickGetStartedButton()
     {
-        this.waitForElementAndClick(By.id(GET_STARTED_BUTTON), "Cannot find and click 'Начать' link", 10);
+        this.waitForElementAndClick(GET_STARTED_BUTTON, "Cannot find and click 'Начать' link", 10);
     }
 }

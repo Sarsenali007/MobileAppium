@@ -11,22 +11,16 @@ public class CoreTestCase extends TestCase {
 
     protected AppiumDriver driver;
 
-    private static String Appium_URL="http://127.0.0.1:4723/wd/hub/";
+    private static final String PLATFORM_IOS ="ios";
+    private static final String PLATFORM_ANDROID ="android";
 
+    private static final String Appium_URL ="http://127.0.0.1:4723/wd/hub/";
     @Override
     protected void setUp() throws Exception{
 
         super.setUp();
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        capabilities.setCapability("platformName","Android");
-        capabilities.setCapability("deviceName","AndroidTestDevice");
-        capabilities.setCapability("platformVersion","10");
-        capabilities.setCapability("automationName","Appium");
-        capabilities.setCapability("appPackage","org.wikipedia");
-        capabilities.setCapability("appActivity",".main.MainActivity");
-        capabilities.setCapability("app","/Users/sarsenalizhunisbek/Documents/GitHub/MobileAppium/apks/org.wikipedia.apk");
+        DesiredCapabilities capabilities = this.getCapabilitiesByPlatformEnv();
         driver = new AndroidDriver(new URL(Appium_URL), capabilities);
     }
 
@@ -38,4 +32,32 @@ public class CoreTestCase extends TestCase {
 
     }
 
+    private DesiredCapabilities getCapabilitiesByPlatformEnv() throws Exception
+    {
+        String platform = System.getenv("PLATFORM");
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        if(platform.equals(PLATFORM_ANDROID)){
+            capabilities.setCapability("platformName","Android");
+            capabilities.setCapability("deviceName","AndroidTestDevice");
+            capabilities.setCapability("platformVersion","10");
+            capabilities.setCapability("automationName","Appium");
+            capabilities.setCapability("appPackage","org.wikipedia");
+            capabilities.setCapability("appActivity",".main.MainActivity");
+            capabilities.setCapability("app","/Users/sarsenalizhunisbek/Documents/GitHub/MobileAppium/apks/org.wikipedia.apk");
+        }
+        else if(platform.equals(PLATFORM_IOS)) {
+            capabilities.setCapability("platformName", "iOS");
+            capabilities.setCapability("deviceName", "iPhone 8");
+            capabilities.setCapability("platformVersion", "15.2");
+            capabilities.setCapability("app", "/Users/sarsenalizhunisbek/Downloads/wikipedia-ios-developer/Wikipedia.app");
+        }
+        else
+        {
+            throw new Exception("Cannot get run platform from env variable. Platform value" + platform);
+        }
+
+        return capabilities;
+    }
 }

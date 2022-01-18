@@ -23,7 +23,7 @@ public class iOSTestCase extends TestCase {
         capabilities.setCapability("platformName","iOS");
         capabilities.setCapability("deviceName","iPhone 8");
         capabilities.setCapability("platformVersion","15.2");
-        capabilities.setCapability("app","/Users/sarsenalizhunisbek/Documents/GitHub/MobileAppium/apks/org.wikipedia.apk");
+        capabilities.setCapability("app","/Users/sarsenalizhunisbek/Downloads/wikipedia-ios-developer/Wikipedia.app");
         driver = new IOSDriver(new URL(Appium_URL), capabilities);
     }
 
