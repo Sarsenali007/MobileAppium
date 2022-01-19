@@ -1,11 +1,9 @@
 package Tests;
 
 import lib.CoreTestCase;
-import lib.ui.MainPageObject;
 import lib.ui.SearchPageObject;
 import lib.ui.factories.SearchPageObjectFactory;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
 public class SearchTests extends CoreTestCase
 {
@@ -13,11 +11,11 @@ public class SearchTests extends CoreTestCase
     @Test
     public void testSearch(){
         SearchPageObject SearchPageObject = SearchPageObjectFactory.get(driver);
-
         SearchPageObject.initSearchInput();
         SearchPageObject.typeSearchLine("Java");
         SearchPageObject.waitForSearchResult("Object-oriented programming language");
     }
+
     @Test
     public void testCancelsearch(){
 

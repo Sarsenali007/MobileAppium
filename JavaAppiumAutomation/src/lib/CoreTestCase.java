@@ -26,7 +26,7 @@ public class CoreTestCase extends TestCase {
 
     private void skipWelcomePageForIOSApp()
     {
-        if(Platform.getInstance().isAndroid())
+        if(Platform.getInstance().isIOS())
         {
             WelcomePageObject WelcomePageObject = new WelcomePageObject(driver);
             WelcomePageObject.clickSkip();

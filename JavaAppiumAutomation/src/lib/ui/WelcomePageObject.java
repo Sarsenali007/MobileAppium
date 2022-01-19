@@ -50,6 +50,6 @@ public class WelcomePageObject extends MainPageObject
     }
 
     public void clickSkip() {
-        this.waitForElementAndClick(SKIP, "Cannot find and click skip button", 5);
+        this.waitForElementAndClick(SKIP, "Cannot find and click skip button", 15);
     }
 }
