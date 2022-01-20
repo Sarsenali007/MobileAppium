@@ -1,23 +1,24 @@
 package lib.ui;
 
 import io.appium.java_client.AppiumDriver;
+import lib.Platform;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ArticlePageObject extends MainPageObject {
+abstract public class ArticlePageObject extends MainPageObject {
 
-    private static final String
-            TITLE = "id:org.wikipedia:id/view_page_title_text",
-            FOOTER_ELEMENT = "xpath://*[@text='View page in browser']",
-            OPTIONS_BUTTON = "xpath://android.widget.ImageView[@content-desc='More options']",
-            OPTIONS_LAST_ELEMENT = "xpath://*[@text='Font and theme']",
-            OPTIONS_ADD_TO_MY_LIST_BUTTON = "xpath://*[@text='Add to reading list']",
-            ADD_TO_MY_LIST_OVERLAY = "id:org.wikipedia:id/onboarding_button",
-            MY_LIST_NAME_INPUT = "xpath://*[@resource-id='org.wikipedia:id/text_input']",
-            MY_LIST_OK_BUTTON = "xpath://*[@text='OK']",
-            MY_LIST_NAME_TPL = "xpath://*[@resource-id='org.wikipedia:id/item_title'][@text='{FOLDER_NAME}']",
-            CLOSE_ARTICLE_BUTTON = "xpath://android.widget.ImageButton[@content-desc='Navigate up']"
+    protected static String
+            TITLE,
+            FOOTER_ELEMENT,
+            OPTIONS_BUTTON,
+            OPTIONS_LAST_ELEMENT,
+            OPTIONS_ADD_TO_MY_LIST_BUTTON,
+            ADD_TO_MY_LIST_OVERLAY,
+            MY_LIST_NAME_INPUT,
+            MY_LIST_OK_BUTTON,
+            MY_LIST_NAME_TPL,
+            CLOSE_ARTICLE_BUTTON
     ;
 
     public ArticlePageObject(AppiumDriver driver)
@@ -30,10 +31,13 @@ public class ArticlePageObject extends MainPageObject {
         return this.waitForElementPresent((TITLE), "cannon find 'article title'", 15);
     }
 
-    public String getArticleTitle()
-    {
-        WebElement title_element = waitForTitleElement();
-        return title_element.getAttribute("text");
+    public String getArticleTitle() {
+        WebElement titleElement = waitForTitleElement();
+        if (Platform.getInstance().isAndroid()) {
+            return titleElement.getAttribute("text");
+        } else {
+            return titleElement.getAttribute("name");
+        }
     }
 
     public static String getFolderXpathByName(String nameOfFolder) {

@@ -25,23 +25,23 @@ abstract public class SearchPageObject extends MainPageObject{
     //template methods
     public void initSearchInput()
     {
-        this.waitForElementPresent(SEARCH_INIT_ELEMENT, "Cannot find search input after clicking search init element", 15);
+       // this.waitForElementPresent(SEARCH_INIT_ELEMENT, "Cannot find search input after clicking search init element", 15);
         this.waitForElementAndClick(SEARCH_INIT_ELEMENT, "Cannot find and click search init element", 15);
     }
 
     public void waitForCancelbuttonToAppear()
     {
-        this.waitForElementPresent(SERCH_CANCEL_BUTTON, "Cannot find cancel button", 5);
+        this.waitForElementPresent(SERCH_CANCEL_BUTTON, "Cannot find cancel button", 15);
     }
 
     public void waitForCancelbuttonToDisappear()
     {
-        this.waitForElementNotPresent(SERCH_CANCEL_BUTTON, "Search cancel button is still present", 5);
+        this.waitForElementNotPresent(SERCH_CANCEL_BUTTON, "Search cancel button is still present", 15);
     }
 
     public void clickCancelSearch()
     {
-        this.waitForElementAndClick(SERCH_CANCEL_BUTTON, "Cannot find and click search cancel button", 5);
+        this.waitForElementAndClick(SERCH_CANCEL_BUTTON, "Cannot find and click search cancel button", 15);
     }
 
     public void typeSearchLine(String search_line)
