@@ -46,13 +46,13 @@ abstract public class SearchPageObject extends MainPageObject{
 
     public void typeSearchLine(String search_line)
     {
-        this.waitForElementAndSendKeys(SEARCH_INIT_ELEMENT,search_line, "Cannot find search input after clicking search init element", 15);
+        this.waitForElementAndSendKeys(SEARCH_INPUT,search_line, "Cannot find search input after clicking search init element", 15);
     }
 
     public void waitForSearchResult(String substring)
     {
         String search_result_xpath = getResultSearchElement(substring);
-        this.waitForElementPresent(search_result_xpath, "Cannot find search result with substring" + substring, 5);
+        this.waitForElementPresent(search_result_xpath, "Cannot find search result with substring" + substring, 15);
     }
 
     public void clickByArticleWithSubstring(String substring)
