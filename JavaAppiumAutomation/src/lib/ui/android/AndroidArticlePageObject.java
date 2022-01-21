@@ -8,6 +8,7 @@ public class AndroidArticlePageObject extends ArticlePageObject {
     {
         TITLE = "id:org.wikipedia:id/view_page_title_text";
         FOOTER_ELEMENT = "xpath://*[@text='View page in browser']";
+        SUBTITLE = "id:org.wikipedia:id/view_page_subtitle_text";
         OPTIONS_BUTTON = "xpath://android.widget.ImageView[@content-desc='More options']";
         OPTIONS_LAST_ELEMENT = "xpath://*[@text='Font and theme']";
         OPTIONS_ADD_TO_MY_LIST_BUTTON = "xpath://*[@text='Add to reading list']";

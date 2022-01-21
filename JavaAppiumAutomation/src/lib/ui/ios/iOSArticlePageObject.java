@@ -7,7 +7,7 @@ public class iOSArticlePageObject extends ArticlePageObject {
     static
     {
         TITLE = "id:Java (programming language)";
-        //SUBTITLE = "id:Object-oriented programming language";
+        SUBTITLE = "id:Object-oriented programming language";
         FOOTER_ELEMENT = "id:View article in browser";
         OPTIONS_ADD_TO_MY_LIST_BUTTON = "id:Save for later";
         //MY_LIST_NAME_TPL = "xpath://*[@resource-id='org.wikipedia:id/item_title'][@text='{FOLDER_NAME}']";

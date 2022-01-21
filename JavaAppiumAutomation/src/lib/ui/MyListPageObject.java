@@ -4,9 +4,9 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
 public class MyListPageObject extends MainPageObject {
-    private static final String
-            FOLDER_BY_NAME_TPL = "xpath://*[@resource-id='org.wikipedia:id/item_title'][@text='{FOLDER_NAME}']",
-            ARTICLE_BY_TITLE_TPL = "xpath://*[@text='{TITLE}']";
+    protected static String
+            FOLDER_BY_NAME_TPL,
+            ARTICLE_BY_TITLE_TPL;
 
     public MyListPageObject(AppiumDriver driver) {
         super(driver);

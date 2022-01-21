@@ -10,6 +10,7 @@ abstract public class ArticlePageObject extends MainPageObject {
 
     protected static String
             TITLE,
+            SUBTITLE,
             FOOTER_ELEMENT,
             OPTIONS_BUTTON,
             OPTIONS_LAST_ELEMENT,
@@ -37,6 +38,19 @@ abstract public class ArticlePageObject extends MainPageObject {
             return titleElement.getAttribute("text");
         } else {
             return titleElement.getAttribute("name");
+        }
+    }
+
+    public WebElement waitForSubtitleElement() {
+        return this.waitForElementPresent(SUBTITLE, "Cannot find subtitle title on page!", 15);
+    }
+
+    public String getArticleSubtitle() {
+        WebElement descriptionElement = waitForSubtitleElement();
+        if (Platform.getInstance().isAndroid()) {
+            return descriptionElement.getAttribute("text");
+        } else {
+            return descriptionElement.getAttribute("name");
         }
     }
 
@@ -127,6 +141,12 @@ abstract public class ArticlePageObject extends MainPageObject {
                 5
         );
     }
+
+    public void addArticlesToMySaved()
+    {
+        this.waitForElementAndClick(OPTIONS_ADD_TO_MY_LIST_BUTTON, "Cannot find option to add article to redaing list", 5);
+    }
+
     public void closeArticle()
     {
         this.waitForElementAndClick(
