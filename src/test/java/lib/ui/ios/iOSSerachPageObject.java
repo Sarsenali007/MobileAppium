@@ -2,6 +2,7 @@ package lib.ui.ios;
 
 import io.appium.java_client.AppiumDriver;
 import lib.ui.SearchPageObject;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class iOSSerachPageObject extends SearchPageObject {
 
@@ -14,7 +15,7 @@ public class iOSSerachPageObject extends SearchPageObject {
         SEARCH_EMPTY_RESULT_ELEMENT = "xpath://XCUIElementTypeStaticText[@name='No results found']";
     }
 
-    public iOSSerachPageObject(AppiumDriver driver)
+    public iOSSerachPageObject(RemoteWebDriver driver)
     {
         super(driver);
     }

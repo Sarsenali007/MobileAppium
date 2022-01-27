@@ -1,5 +1,6 @@
 package Tests;
 
+import io.appium.java_client.AppiumDriver;
 import lib.CoreTestCase;
 import lib.Platform;
 import lib.ui.WelcomePageObject;

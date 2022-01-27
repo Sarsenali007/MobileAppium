@@ -7,9 +7,10 @@ import lib.ui.android.AndroidMyListPageObject;
 import lib.ui.android.AndroidNavigationUI;
 import lib.ui.ios.iOSMyListPageObject;
 import lib.ui.ios.iOSNavigationUI;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class MyListPageObjectFactory {
-    public static MyListPageObject get(AppiumDriver driver)
+    public static MyListPageObject get(RemoteWebDriver driver)
     {
         if(Platform.getInstance().isAndroid()){
             return new AndroidMyListPageObject(driver);
