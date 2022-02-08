@@ -8,12 +8,13 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses(
         {
-                ArticleTests.class,
+                //ArticleTests.class,
                 //ChangeAppConditionTests.class,
-                GetStartedTest.class,
-                MyListsTests.class,
-                SearchTests.class
-
+                //GetStartedTest.class,
+                //MyListsTests.class,
+                //SearchTests.class
+                //AuthorizationTests.class,
+                ChangeCompanyTests.class
         }
 )
 public class TestSuite {

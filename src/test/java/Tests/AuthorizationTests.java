@@ -1,61 +1,19 @@
-package lib;
+package Tests;
 
-import io.appium.java_client.AppiumDriver;
-import io.qameta.allure.Step;
-import junit.framework.TestCase;
+import lib.CoreTestCase;
+import lib.Platform;
 import lib.ui.*;
-import lib.ui.factories.AuthorizationPageFactory;
-import lib.ui.factories.AuthorizationPasswordPageObjectFactory;
-import lib.ui.factories.MainFirstPageObjectFactory;
-import lib.ui.factories.OTPPageObjectFactory;
-
-import org.junit.Before;
-import org.junit.After;
-
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.io.FileOutputStream;
-import java.util.Properties;
+import lib.ui.factories.*;
+import org.junit.Test;
 
 
-public class CoreTestCase{
-
-    protected RemoteWebDriver driver;
-
-    @Before
-    @Step("Run driver and session")
-    public void setUp() throws Exception{
-        driver = Platform.getInstance().getDriver();
-        this.createAllurePropertyFile();
-       // this.skipWelcomePageForIOSApp();
-        this.openJysanOnWeb();
-        this.testCorrectAuthorization();
-    }
-
-    @After
-    @Step("Stop driver and session")
-    public void tearDown(){
-        driver.quit();
-    }
+public class AuthorizationTests extends CoreTestCase {
 
 
-    protected void openJysanOnWeb()
-    {
-        if(Platform.getInstance().isMW())
-        {
-            driver.get("https://business-staging.jysanbank.kz:8460");
-        }
-        else
-        {
-            System.out.println("Method openJysanOnWeb() do nothing for platform" + Platform.getInstance().getPlatformVar());
-        }
-    }
-
-    @Step("First Authorization")
+    @Test
     public void testCorrectAuthorization() throws InterruptedException {
 
-
-        String  TextTenge = "Счета";
+        String  TextTenge = "Cчета";
 
         AuthorizationPageObject AuthorizationPageObject = AuthorizationPageFactory.get(driver);
         AuthorizationPageObject.clickInputIIN();
@@ -111,22 +69,5 @@ public class CoreTestCase{
 
         MainFirstPageObject MainFirstPageObject = MainFirstPageObjectFactory.get(driver);
         MainFirstPageObject.waitElementOnMainTextTenge(TextTenge);
-    }
-
-    public void createAllurePropertyFile()
-    {
-        String path = System.getProperty("allure.results.directory");
-        try{
-            Properties props = new Properties();
-            FileOutputStream fos = new FileOutputStream(path + "/environment.properties");
-            props.setProperty("Environment", Platform.getInstance().getPlatformVar());
-            props.store(fos, "See https://github.com/allure-framework/allure-app/wiki/Environment");
-            fos.close();
-        }
-        catch (Exception e)
-        {
-            System.err.println("IO problem when writing allure properties file");
-            e.printStackTrace();
-        }
     }
 }

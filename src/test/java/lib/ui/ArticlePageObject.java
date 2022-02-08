@@ -37,8 +37,12 @@ abstract public class ArticlePageObject extends MainPageObject {
         WebElement titleElement = waitForTitleElement();
         if (Platform.getInstance().isAndroid()) {
             return titleElement.getAttribute("text");
-        } else {
+        } else if (Platform.getInstance().isIOS()) {
             return titleElement.getAttribute("name");
+        }
+        else
+        {
+           return titleElement.getText();
         }
     }
 
@@ -61,11 +65,20 @@ abstract public class ArticlePageObject extends MainPageObject {
 
     public void swipeToFooter()
     {
+        if(Platform.getInstance().isAndroid()){
         this.swipeUpToFindElement(
                 FOOTER_ELEMENT,
                 "Cannot find 'Search Wikipedia' input",
                 20
         );
+        }
+        else if (Platform.getInstance().isMW()){
+            this.scrollWebPageTillElementNotVisible(
+                    FOOTER_ELEMENT,
+                    "Cannot find end of article",
+                    40
+            );
+        }
     }
 
     public void addArticleToMylist(String name_of_folder){

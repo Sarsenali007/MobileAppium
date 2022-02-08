@@ -10,6 +10,7 @@ import lib.ui.factories.ArticlePageObjectFactory;
 import lib.ui.factories.MyListPageObjectFactory;
 import lib.ui.factories.NavigationUIFactory;
 import lib.ui.factories.SearchPageObjectFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class MyListsTests extends CoreTestCase
@@ -101,7 +102,7 @@ public class MyListsTests extends CoreTestCase
 
         String articleTitle = ArticlePageObject.getArticleTitle();
 
-        assertEquals(
+        Assert.assertEquals(
                 "We see unexpected title!",
                 secondArticleTitle,
                 articleTitle

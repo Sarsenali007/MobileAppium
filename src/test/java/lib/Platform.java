@@ -3,8 +3,10 @@ package lib;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -53,7 +55,6 @@ public class Platform {
 
     public boolean isIOS()
     {
-
         return isPlatform(PLATFORM_IOS);
     }
     public boolean isMW()
@@ -69,9 +70,9 @@ public class Platform {
         capabilities.setCapability("deviceName","AndroidTestDevice");
         capabilities.setCapability("platformVersion","10");
         capabilities.setCapability("automationName","Appium");
-        capabilities.setCapability("appPackage","org.wikipedia");
-        capabilities.setCapability("appActivity",".main.MainActivity");
-        capabilities.setCapability("app","/Users/sarsenalizhunisbek/Documents/GitHub/MobileAppium/apks/org.wikipedia.apk");
+        capabilities.setCapability("appPackage","kz.jysan.business.dev");
+        capabilities.setCapability("appActivity","kz.jysan.business.ui.SplashActivity");
+        capabilities.setCapability("app","/Users/sarsenalizhunisbek/Downloads/JB/app-dev-debug.apk");
         capabilities.setCapability(AndroidMobileCapabilityType.ANDROID_INSTALL_TIMEOUT, "30000");
         return capabilities;
     }
@@ -83,7 +84,7 @@ public class Platform {
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", "iPhone 8");
         capabilities.setCapability("platformVersion", "15.2");
-        capabilities.setCapability("app", "/Users/sarsenalizhunisbek/Downloads/wikipedia-ios-developer/Wikipedia.app");
+        capabilities.setCapability("app", "/Users/sarsenalizhunisbek/Downloads/JB/Jysan.app");
         return capabilities;
 
     }
@@ -100,7 +101,12 @@ public class Platform {
         mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) " + "AppleWebKit/535.19 (KHTML, like Gecko)"+ "Chrome/18.0.1025.166 Mobile Safari/535.19");
 
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("window-size=340,640");
+        chromeOptions.addArguments("--window-size=1920,1200");
+
+        chromeOptions.setAcceptInsecureCerts(true);
+
+        DesiredCapabilities crcapabilities = DesiredCapabilities.chrome();
+        crcapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
         return chromeOptions;
     }
