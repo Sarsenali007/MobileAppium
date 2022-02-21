@@ -35,9 +35,6 @@ public class ChangeCompanyTests extends CoreTestCase {
         Thread.sleep(3000);
         MainFirstPageObject.waitElementOnMainTextTenge(TextTenge);
 
-        ArticlePageObject ArticlePageObject = ArticlePageObjectFactory.get(driver);
-        ArticlePageObject.takeScreenshot("IBAN_on_Second_company");
-
         if (Platform.getInstance().isMW()){
             MainFirstPageObject.assertThereIsNoIbanFirstCompany(short_IBAN);
         }
@@ -45,6 +42,5 @@ public class ChangeCompanyTests extends CoreTestCase {
         {
             MainFirstPageObject.assertThereIsNoIbanFirstCompany(short_IBAN_iOS);
         }
-
     }
 }

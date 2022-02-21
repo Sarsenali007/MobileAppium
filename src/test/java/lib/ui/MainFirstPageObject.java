@@ -58,9 +58,7 @@ public class MainFirstPageObject extends MainPageObject
     public void assertThereIsNoIbanFirstCompany(String substring) {
 
         String MainPageTextIBAN = getTextIBANFromMain(substring);
-
-        //screenshot(this.takeScreenshot("assert There Is No Iban First Company"));
-
+        //screenshot(this.takeScreenshot("assert_No_Iban_First_Company"));
         this.waitForElementNotPresent(MainPageTextIBAN, "We supposed not to find IBAN First company!", 5);
     }
 }

@@ -117,6 +117,7 @@ public class Platform {
         return my_platform.equals(platform);
     }
 
+
     public String getPlatformVar()
     {
         return System.getenv("PLATFORM");

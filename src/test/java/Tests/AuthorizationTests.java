@@ -13,7 +13,7 @@ public class AuthorizationTests extends CoreTestCase {
     @Test
     public void testCorrectAuthorization() throws InterruptedException {
 
-        String  TextTenge = "Cчета";
+        String  TextTenge = "чета";
 
         AuthorizationPageObject AuthorizationPageObject = AuthorizationPageFactory.get(driver);
         AuthorizationPageObject.clickInputIIN();

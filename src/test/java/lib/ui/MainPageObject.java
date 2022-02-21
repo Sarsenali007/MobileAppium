@@ -272,7 +272,7 @@ public class MainPageObject {
     {
         TakesScreenshot ts = (TakesScreenshot)this.driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        String path = System.getProperty("user.dir" + "/" + name + "_screenshot.png");
+        String path = System.getProperty("user.dir") + "/" + name + "_screenshot.png";
         try {
             FileUtils.copyFile(source, new File(path));
             System.out.println("The screenshot was taken:" + path);
@@ -283,14 +283,12 @@ public class MainPageObject {
     }
 
     @Attachment
-    public static byte[] screenshot(String path)
-    {
+    public static byte[] screenshot(String path) {
         byte[] bytes = new byte[0];
+
         try {
             bytes = Files.readAllBytes(Paths.get(path));
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Cannot get bytes from screenshot. Error: " + e.getMessage());
         }
         return bytes;
