@@ -68,6 +68,6 @@ public class AuthorizationTests extends CoreTestCase {
         }
 
         MainFirstPageObject MainFirstPageObject = MainFirstPageObjectFactory.get(driver);
-        MainFirstPageObject.waitElementOnMainTextTenge(TextTenge);
+        //MainFirstPageObject.waitElementOnMainTextTenge(TextTenge);
     }
 }

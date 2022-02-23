@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: Tests.ChangeCompanyTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.151 s <<< FAILURE! - in Tests.ChangeCompanyTests
+testChangeCompany(Tests.ChangeCompanyTests)  Time elapsed: 0.069 s  <<< ERROR!
+java.lang.Exception: Cannot detect type of the Driver. Platform value: web_mobile
+
+testChangeCompany(Tests.ChangeCompanyTests)  Time elapsed: 0.069 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.remote.RemoteWebDriver.quit()" because "this.driver" is null
+
