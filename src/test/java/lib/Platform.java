@@ -1,3 +1,16 @@
+package dev.selenium.getting_started;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
+
 package lib;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -8,7 +21,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.RemoteDriver;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -107,6 +120,11 @@ public class Platform {
 
         DesiredCapabilities crcapabilities = DesiredCapabilities.chrome();
         crcapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        
+        WebDriverManager.chromedriver().setup();
+
+        WebDriver driver = new ChromeDriver();
+
 
         return chromeOptions;
     }
