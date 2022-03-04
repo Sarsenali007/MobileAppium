@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Tests.ChangeCompanyTests" time="0.151" tests="2" errors="2" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Tests.ChangeCompanyTests" time="30.854" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="KZ"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/sarsenalizhunisbek/JavaAppium/target/surefire/surefirebooter585692973171958510.jar /Users/sarsenalizhunisbek/JavaAppium/target/surefire 2022-02-11T20-19-32_277-jvmRun1 surefire8008358245333916427tmp surefire_05387502135357158130tmp"/>
+    <property name="sun.java.command" value="/Users/sarsenalizhunisbek/JavaAppium/target/surefire/surefirebooter14490946861577848728.jar /Users/sarsenalizhunisbek/JavaAppium/target/surefire 2022-02-23T22-57-07_521-jvmRun1 surefire11430859311000541221tmp surefire_011552129017217618114tmp"/>
     <property name="http.nonProxyHosts" value="local,|*.local,|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="ChangeCompanyTests#testChangeCompany"/>
@@ -30,13 +30,13 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/Users/sarsenalizhunisbek/JavaAppium/target/surefire/surefirebooter585692973171958510.jar"/>
+    <property name="surefire.real.class.path" value="/Users/sarsenalizhunisbek/JavaAppium/target/surefire/surefirebooter14490946861577848728.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local,|*.local,|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="17.0.1+12-LTS-39"/>
     <property name="user.name" value="sarsenalizhunisbek"/>
     <property name="path.separator" value=":"/>
-    <property name="os.version" value="12.1"/>
+    <property name="os.version" value="12.2.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
@@ -56,12 +56,5 @@
     <property name="socksNonProxyHosts" value="local,|*.local,|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testChangeCompany" classname="Tests.ChangeCompanyTests" time="0.069">
-    <error message="Cannot detect type of the Driver. Platform value: web_mobile" type="java.lang.Exception">java.lang.Exception: Cannot detect type of the Driver. Platform value: web_mobile
-</error>
-  </testcase>
-  <testcase name="testChangeCompany" classname="Tests.ChangeCompanyTests" time="0.069">
-    <error message="Cannot invoke &quot;org.openqa.selenium.remote.RemoteWebDriver.quit()&quot; because &quot;this.driver&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.remote.RemoteWebDriver.quit()" because "this.driver" is null
-</error>
-  </testcase>
+  <testcase name="testChangeCompany" classname="Tests.ChangeCompanyTests" time="30.761"/>
 </testsuite>
